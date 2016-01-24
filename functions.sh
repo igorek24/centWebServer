@@ -4,6 +4,8 @@
 # Install Apache function
 install_httpd(){
   yum -y install httpd mod_ssl
+  echo "Enabling Apache service to start at boot."
+  systemctl enable httpd
 }
 # Backup httpd conf files function.
 bck_httpd_confs(){
@@ -60,6 +62,21 @@ httpd_hardening(){
   # Add index.cfm to DirectoryIndex
   sed -i "s/DirectoryIndex index.html/DirectoryIndex index.html index.cfm/g" /etc/httpd/conf/httpd.conf
 }
+# httpd restart function
+httpd_restart(){
+  # Installing Apache and mod_ssl.
+  dialog --title "Restart Apache?" \
+  --backtitle "CentOS 7 Configuration Utility" \
+  --yesno "Would you like to restart Apache service? Select [Yes] to restart or [No] to skip this step." 10 60
+
+  install_php_response=$?
+  case $install_php_response in
+     0)  install_php ; php_hardening;;
+     1) echo "PHP installation skipped.";;
+     255) echo "[ESC] key pressed.";;
+  esac
+
+}
 # Checking if $SYS_USER exists and if not create it.
 USER_CHECK(){
   if grep -c "^$SYS_USER:" /etc/passwd > 0; then
@@ -114,4 +131,7 @@ httpd_selinux(){
 # Detecting arctiecture (if it's 64bit or 32bit), downloading and installing Lucee
 install_php(){
   yum -y install php php-gd php-ldap php-odbc php-pear php-xml php-xmlrpc php-mbstring php-snmp php-soap curl curl-devel php-mysqli
+}
+php_hardening(){
+
 }
