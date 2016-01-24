@@ -69,10 +69,10 @@ httpd_restart(){
   --backtitle "CentOS 7 Configuration Utility" \
   --yesno "Would you like to restart Apache service? Select [Yes] to restart or [No] to skip this step." 10 60
 
-  install_php_response=$?
-  case $install_php_response in
-     0)  install_php ; php_hardening;;
-     1) echo "PHP installation skipped.";;
+  httpd_restart_response=$?
+  case $httpd_restart_response in
+     0)  systemctl restart httpd;;
+     1) echo "Apache service not restarted.";;
      255) echo "[ESC] key pressed.";;
   esac
 
