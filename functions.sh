@@ -132,6 +132,6 @@ httpd_selinux(){
 install_php(){
   yum -y install php php-gd php-ldap php-odbc php-pear php-xml php-xmlrpc php-mbstring php-snmp php-soap curl curl-devel php-mysqli
 }
-php_hardening(){
+#php_hardening(){
 
-}
+#}
