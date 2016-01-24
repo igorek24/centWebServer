@@ -30,7 +30,7 @@ dialog --title "Install Apache?" \
 
 install_httpd_response=$?
 case $install_httpd_response in
-   0)  install_httpd ; bck_httpd_confs ; httpd_hardening ;;
+   0)  install_httpd ; bck_httpd_confs ; httpd_hardening httpd_restart;;
    1) echo "Apache installation skipped.";;
    255) echo "[ESC] key pressed.";;
 esac
