@@ -4,7 +4,7 @@
 . ./functions.sh
 # root permission check.
 if [ "$(whoami)" != "root" ]; then
-  dialog --title "Error!" --msgbox "Sorry, you need to run this script using sudo or as \"root\"." 6 65
+  dialog --title "Error!" --msgbox "Sorry, you need to run this script continue sudo or as \"root\"." 6 65
 	exit
 fi
 
@@ -26,7 +26,7 @@ update_response=$?
 # Installing Apache and mod_ssl.
 dialog --title "Install Apache?" \
 --backtitle "CentOS 7 Configuration Utility" \
---yesno "Would you like to Install Apache (httpd)? Select [Yes] to continiu or [No] to skip this step." 10 60
+--yesno "Would you like to Install Apache (httpd)? Select [Yes] to continue or [No] to skip this step." 10 60
 
 install_httpd_response=$?
 case $install_httpd_response in
@@ -43,7 +43,7 @@ httpd_selinux
 # Installing Apache and mod_ssl.
 dialog --title "Install PHP?" \
 --backtitle "CentOS 7 Configuration Utility" \
---yesno "Would you like to Install PHP? Select [Yes] to continiu or [No] to skip this step." 10 60
+--yesno "Would you like to Install PHP? Select [Yes] to continue or [No] to skip this step." 10 60
 
 install_php_response=$?
 case $install_php_response in
