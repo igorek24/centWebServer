@@ -135,3 +135,11 @@ install_php(){
 #php_hardening(){
 
 #}
+firewall_conf(){
+  echo "Configuring HTTP (Port 80)."
+  firewall-cmd --permanent --zone=public --add-service=http
+  echo "Configuring HTTPS (Port 443)."
+  firewall-cmd --permanent --zone=public --add-service=https
+  echo "Reloading Firewall configuration."
+  firewall-cmd --reload
+}
