@@ -45,7 +45,7 @@ dialog --title "Install PHP?" \
 --backtitle "CentOS 7 Configuration Utility" \
 --yesno "Would you like to Install PHP? Select [Yes] to continiu or [No] to skip this step." 10 60
 
-install_lucee_response=$?
+install_php_response=$?
 case $install_php_response in
    0)  install_php ; php_hardening;;
    1) echo "PHP installation skipped.";;
