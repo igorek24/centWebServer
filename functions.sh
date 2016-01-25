@@ -153,6 +153,8 @@ install_mysql(){
     cp inc/MariaDB.repo /etc/yum.repos.d/
     yum clean all
     yum -y install MariaDB-server MariaDB-client
+    systemctl enable mariadb.service
+    systemctl start mariadb.service
   elif [ $SELECT_MYSQL_SERVER = "Percona" ]; then
     yum -y install http://www.percona.com/downloads/percona-release/redhat/0.1-3/percona-release-0.1-3.noarch.rpm
     yum -y install Percona-Server-server-56
