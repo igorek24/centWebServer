@@ -101,6 +101,7 @@ USER_CHECK(){
       else
     	echo "$SYS_USER user does not exist, creating it."
       useradd $SYS_USER
+      passwd $SYS_USER
     fi
 
 }
