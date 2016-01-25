@@ -143,6 +143,29 @@ php_conf(){
   sed -i "s/expose_php = Off/expose_php = $PHP_EXPOSE_PHP/g" /etc/php.ini
   sed -i "s/post_max_size = 8M/post_max_size = $PHP_POST_MAX_SIZE/g" /etc/php.ini
 }
+install_mysql(){
+  if [ $SELECT_MYSQL_SERVER = "MariaDB" ]; then
+    yum -y install mariadb-server mariadb
+    systemctl enable mariadb.service
+    systemctl start mariadb.service
+  elif [ $SELECT_MYSQL_SERVER = "MariaDB-Repo" ]; then
+    rpm --import https://yum.mariadb.org/RPM-GPG-KEY-MariaDB
+    cp inc/MariaDB.repo /etc/yum.repos.d/
+    yum clean all
+    yum -y install MariaDB-server MariaDB-client
+  elif [ $SELECT_MYSQL_SERVER = "Percona" ]; then
+    yum -y install http://www.percona.com/downloads/percona-release/redhat/0.1-3/percona-release-0.1-3.noarch.rpm
+    yum -y install Percona-Server-server-56
+    systemctl enable mysql.service
+    systemctl start mysql.service
+  elif [ $SELECT_MYSQL_SERVER = "MySQL" ]; then
+    rpm -Uvh http://dev.mysql.com/get/mysql-community-release-el7-5.noarch.rpm
+    yum -y install mysql-community-server
+    systemctl enable mysqld
+    systemctl start mysqld
+  else
+    echo -e "${BYel}${On_Red}Something went wrong. Please check config.sh if \"SELECT_MYSQL_SERVER\" is set correctly!${RCol}"
+}
 firewall_conf(){
   echo "Configuring HTTP (Port 80)."
   firewall-cmd --permanent --zone=public --add-service=http

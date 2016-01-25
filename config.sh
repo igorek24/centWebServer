@@ -48,6 +48,16 @@ PHP_DATE_TIME="America/Los_Angeles"
 # on your server or not. For more info, visit http://php.net/expose-php
 PHP_EXPOSE_PHP="Off"
 ################################################################################
+#                             PHP Configuration                                #
+################################################################################
+# Select wich flavor of MySQL server you would like to install.
+# MariaDB - MariaDB from CentOS repo.
+# MariaDB-Repo - MariaDB from MariaDB repo Newest stable.
+# Percona - Percona MySQL server from Percona repo.
+# MySQL - MySQL server from Oracle
+# Change to your prefered (MariaDB, MariaDB-Repo, Percona, MySQL)
+SELECT_MYSQL_SERVER="MariaDB-Repo"
+################################################################################
 #                        Custome firewall Configuration                        #
 ################################################################################
 

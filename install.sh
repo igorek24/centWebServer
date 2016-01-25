@@ -45,6 +45,17 @@ case $install_php_response in
    1) echo "PHP installation skipped.";;
    255) echo "[ESC] key pressed.";;
 esac
+# Installing PHP.
+dialog --title "Install MySQL Server?" \
+--backtitle "CentOS 7 Configuration Utility" \
+--yesno "Would you like to Install MySQL Server? Select [Yes] to continue or [No] to skip this step." 10 60
+
+install_mysql_response=$?
+case $install_mysql_response in
+   0)  install_mysql ; mysql_secure_installation;;
+   1) echo "PHP installation skipped.";;
+   255) echo "[ESC] key pressed.";;
+esac
 # Configure Firewall
 dialog --title "Cinfigure Firewall" \
 --backtitle "CentOS 7 Configuration Utility" \
