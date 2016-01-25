@@ -41,7 +41,7 @@ dialog --title "Install PHP?" \
 
 install_php_response=$?
 case $install_php_response in
-   0)  install_php ; php_hardening ; httpd_restart;;
+   0)  install_php ; php_conf ; httpd_restart;;
    1) echo "PHP installation skipped.";;
    255) echo "[ESC] key pressed.";;
 esac
@@ -53,7 +53,7 @@ dialog --title "Cinfigure Firewall" \
 firewall_response=$?
 case $firewall_response in
    0)  firewall_conf;;
-   1) echo "PHP installation skipped.";;
+   1) echo "Firewall configuration skipped.";;
    255) echo "[ESC] key pressed.";;
 esac
 

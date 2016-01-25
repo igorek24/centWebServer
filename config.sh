@@ -22,13 +22,39 @@ HTTPD_WEBMASTER="webmaster@exemple.com"
 APP_DOMAIN_NAME="exemple.com"
 # Enter your alias . EXEMPLE: www.mydomain.com OR dev.mydomain.com
 APP_ALIAS="www.exemple.com"
+################################################################################
+#                             PHP Configuration                                #
+################################################################################
+# PHP maximum allowed size for uploaded files.
+# For more info, visit http://php.net/upload-max-filesize
+# NOTE: You can use "M" for MeagaBites or "G" for Gigabytes.Default is 2M.
+PHP_UPLOAD_MAX_FILESIZE="256M"
+# Change php memory limit.
+# NOTE: You can use "M" for MeagaBites or "G" for Gigabytes.Default is 2M.
+# NOTE: Default value is 128M.
+PHP_MEMORY_LIMIT="512M"
+# Change php post_max_size.
+# NOTE: You can use "M" for MeagaBites or "G" for Gigabytes.Default is 2M.
+# NOTE: It must be equal or greater than upload_max_filesize. Default value
+# is 8M
+PHP_POST_MAX_SIZE="256M"
+# Defines the default timezone used by the date functions.
+# For more info, visit http://php.net/date.timezone
+# For List of Supported Timezones visit http://php.net/manual/en/timezones.php
+PHP_DATE_TIME="America/Los_Angeles"
+# Decides whether PHP may expose the fact that it is installed on the server
+# (e.g. by adding its signature to the Web server header).  It is no security
+# threat in any way, but it makes it possible to determine whether you use PHP
+# on your server or not. For more info, visit http://php.net/expose-php
+PHP_EXPOSE_PHP="Off"
+################################################################################
+#                        Custome firewall Configuration                        #
+################################################################################
 
 ############### DO NOT CHANGE ANYTHING BELOW, UNLESS YOU KNOW WHAT YOU ARE DOING ###############
 
-
 # Terminal Text Colors and Fonts
 RCol='\e[0m'    # Text Reset
-
 # Regular           Bold                Underline           High Intensity      BoldHigh Intens     Background          High Intensity Backgrounds
 Bla='\e[0;30m';     BBla='\e[1;30m';    UBla='\e[4;30m';    IBla='\e[0;90m';    BIBla='\e[1;90m';   On_Bla='\e[40m';    On_IBla='\e[0;100m';
 Red='\e[0;31m';     BRed='\e[1;31m';    URed='\e[4;31m';    IRed='\e[0;91m';    BIRed='\e[1;91m';   On_Red='\e[41m';    On_IRed='\e[0;101m';

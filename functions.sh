@@ -132,9 +132,17 @@ httpd_selinux(){
 install_php(){
   yum -y install php php-gd php-ldap php-odbc php-pear php-xml php-xmlrpc php-mbstring php-snmp php-soap curl curl-devel php-mysqli
 }
-#php_hardening(){
-
-#}
+php_conf(){
+  # php.ini file backup.
+  echo "Backing up php.ini file."
+  cp /etc/php.ini /etc/php.ini.origin
+  # Changing upload_max_filesize to specified in config.
+  sed -i "s/upload_max_filesize = 2M/upload_max_filesize = $PHP_UPLOAD_MAX_FILESIZE/g" /etc/php.ini
+  sed -i "s/memory_limit = 128M/memory_limit = $PHP_MEMORY_LIMIT/g" /etc/php.ini
+  sed -i "s/;date.timezone =/date.time = $PHP_DATE_TIME/g" /etc/php.ini
+  sed -i "s/expose_php = Off/expose_php = $PHP_EXPOSE_PHP/g" /etc/php.ini
+  sed -i "s/post_max_size = 8M/post_max_size = $PHP_POST_MAX_SIZE/g" /etc/php.ini
+}
 firewall_conf(){
   echo "Configuring HTTP (Port 80)."
   firewall-cmd --permanent --zone=public --add-service=http
