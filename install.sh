@@ -30,7 +30,7 @@ dialog --title "Install Apache?" \
 
 install_httpd_response=$?
 case $install_httpd_response in
-   0)  install_httpd ; bck_httpd_confs ; httpd_conf;;
+   0)  install_httpd;bck_httpd_confs;httpd_conf;USER_CHECK;GROUP_CHECK;httpd_webroot_dir;web_admins_permissions;httpd_selinux;;
    1) echo "Apache installation skipped.";;
    255) echo "[ESC] key pressed.";;
 esac
@@ -81,8 +81,6 @@ case $install_mysql_response in
    1) echo "PHP installation skipped.";;
    255) echo "[ESC] key pressed.";;
 esac
-USER_CHECK
-GROUP_CHECK
-httpd_webroot_dir
-web_admins_permissions
-httpd_selinux
+dialog --title "Sucess!" --msgbox "Congratulations, we have successfully configured your new shiny web server" \
+--backtitle "CentOS 7 Configuration Utility" 6 65
+exit
