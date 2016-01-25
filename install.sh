@@ -82,6 +82,6 @@ case $install_mysql_response in
    255) echo "[ESC] key pressed.";;
 esac
 
-dialog --backtitle 'System Information' \
---title 'Sucess!' \
---msgbox 'Congratulations, we have successfully configured your new shiny web server. Clicl OK to start using it!' 6 65
+dialog --backtitle "CentOS 7 Configuration Utility" \
+--title "Sucess!" \
+--msgbox "Congratulations, we have successfully configured your new shiny web server. Clicl \"OK\" to start using it!" 6 65
