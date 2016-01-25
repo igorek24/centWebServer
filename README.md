@@ -1,6 +1,7 @@
 # centWebServer
 ## Configure Web Server on CentOS 7 in seconds.
 
+What would take hours to do manualy, can be done in under 60 seconds (depending on your hardware and internet speed).
 <img src="https://www.theigor.net/imgs/var/resizes/My-Projects/centWebServer/img14.png">
 
 <img src="https://www.theigor.net/imgs/var/resizes/My-Projects/centWebServer/img13.png">
