@@ -147,7 +147,7 @@ httpd_selinux(){
 }
 # Detecting arctiecture (if it's 64bit or 32bit), downloading and installing Lucee
 install_php(){
-  yum -y install php php-gd php-ldap php-odbc php-pear php-xml php-xmlrpc php-mbstring php-snmp php-soap curl curl-devel php-mysqli
+  yum -y install $PHP_MODS_INSTALL
 }
 php_conf(){
   # php.ini file backup.

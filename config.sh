@@ -25,6 +25,9 @@ APP_ALIAS="www.exemple.com"
 ################################################################################
 #                             PHP Configuration                                #
 ################################################################################
+# You may add requaerd PHP modules here.
+# NOTE: You can see all module by running "yum search php-" in terminal.
+PHP_MODS_INSTALL="php php-gd php-ldap php-odbc php-pear php-xml php-xmlrpc php-mbstring php-snmp php-soap curl curl-devel php-mysqli"
 # PHP maximum allowed size for uploaded files.
 # For more info, visit http://php.net/upload-max-filesize
 # NOTE: You can use "M" for MeagaBites or "G" for Gigabytes.Default is 2M.
