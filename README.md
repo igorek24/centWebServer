@@ -5,10 +5,14 @@ What would take hours to do manualy, can be done in under 60 seconds (depending 
 
 ### How to use it.
 
+Edit config.sh to your needs. For the most part defaults should be OK besides "HTTPD_WEBMASTER", "APP_DOMAIN_NAME", "APP_ALIAS" and "PHP_DATE_TIME".
+
+'''html
 git clone https://git.theigor.net/igorek24/centWebServer.git
 
 cd centWebServer
 
+'''
 Edit config.sh to your needs. For the most part defaults should be OK besides "HTTPD_WEBMASTER", "APP_DOMAIN_NAME", "APP_ALIAS" and "PHP_DATE_TIME".
 
 <img src="https://www.theigor.net/imgs/var/resizes/My-Projects/centWebServer/img14.png">
