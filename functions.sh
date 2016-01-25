@@ -165,6 +165,7 @@ install_mysql(){
     systemctl start mysqld
   else
     echo -e "${BYel}${On_Red}Something went wrong. Please check config.sh if \"SELECT_MYSQL_SERVER\" is set correctly!${RCol}"
+  fi
 }
 firewall_conf(){
   echo "Configuring HTTP (Port 80)."
