@@ -60,7 +60,7 @@ httpd_hardening(){
   # Apache webmaster email address
   sed -i "s/ServerAdmin root@localhost/ServerAdmin $HTTPD_WEBMASTER/g" /etc/httpd/conf/httpd.conf
   # Add index.cfm to DirectoryIndex
-  sed -i "s/DirectoryIndex index.html/DirectoryIndex index.html index.cfm/g" /etc/httpd/conf/httpd.conf
+  sed -i "s/DirectoryIndex index.html/DirectoryIndex index.html index.php/g" /etc/httpd/conf/httpd.conf
 }
 # httpd restart function
 httpd_restart(){
@@ -76,6 +76,14 @@ httpd_restart(){
      255) echo "[ESC] key pressed.";;
   esac
 
+}
+httpd_custom_error(){
+  mv /usr/share/httpd/noindex/index.html /usr/share/httpd/noindex/index.html.origin
+  cp inc/custom_error/noindex.html /usr/share/httpd/noindex/index.html
+  cp -R inc/custom_error /usr/share/httpd/
+  cp inc/customerror.conf /etc/httpd/conf.d/
+  chcon -R -u system_u -t httpd_sys_content_t /usr/share/httpd/custom_error
+  restorecon -R /usr/share/httpd/custom_error
 }
 # Checking if $SYS_USER exists and if not create it.
 USER_CHECK(){

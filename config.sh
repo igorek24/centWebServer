@@ -48,7 +48,7 @@ PHP_DATE_TIME="America/Los_Angeles"
 # on your server or not. For more info, visit http://php.net/expose-php
 PHP_EXPOSE_PHP="Off"
 ################################################################################
-#                             PHP Configuration                                #
+#                   MySQL Server Configuration Selection                       #
 ################################################################################
 # Select wich flavor of MySQL server you would like to install.
 # MariaDB - MariaDB from CentOS repo.

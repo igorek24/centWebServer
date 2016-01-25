@@ -30,8 +30,19 @@ dialog --title "Install Apache?" \
 
 install_httpd_response=$?
 case $install_httpd_response in
-   0)  install_httpd ; bck_httpd_confs ; httpd_hardening ; httpd_restart;;
+   0)  install_httpd ; bck_httpd_confs ; httpd_hardening;;
    1) echo "Apache installation skipped.";;
+   255) echo "[ESC] key pressed.";;
+esac
+# Installing custom errors.
+dialog --title "Install custom errors?" \
+--backtitle "CentOS 7 Configuration Utility" \
+--yesno "Would you like to Install custom error pages? Select [Yes] to continue or [No] to skip this step." 10 60
+
+install_custom_errors_response=$?
+case $install_custom_errors_response in
+   0)  httpd_custom_error;;
+   1) echo "Custome error pages installation skipped.";;
    255) echo "[ESC] key pressed.";;
 esac
 # Installing PHP.
@@ -41,11 +52,13 @@ dialog --title "Install PHP?" \
 
 install_php_response=$?
 case $install_php_response in
-   0)  install_php ; php_conf ; httpd_restart;;
+   0)  install_php ; php_conf;;
    1) echo "PHP installation skipped.";;
    255) echo "[ESC] key pressed.";;
 esac
-# Installing PHP.
+# Apache restart
+httpd_restart
+# Installing MySQL Server.
 dialog --title "Install MySQL Server?" \
 --backtitle "CentOS 7 Configuration Utility" \
 --yesno "Would you like to Install MySQL Server? Select [Yes] to continue or [No] to skip this step." 10 60
