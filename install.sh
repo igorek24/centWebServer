@@ -81,6 +81,7 @@ case $install_mysql_response in
    1) echo "PHP installation skipped.";;
    255) echo "[ESC] key pressed.";;
 esac
-dialog --title "Sucess!" --msgbox "Congratulations, we have successfully configured your new shiny web server" \
---backtitle "CentOS 7 Configuration Utility" 6 65
-exit
+
+dialog --backtitle 'System Information' \
+--title 'Sucess!' \
+--msgbox 'Congratulations, we have successfully configured your new shiny web server. Clicl OK to start using it!' 6 65
