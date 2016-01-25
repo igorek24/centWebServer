@@ -1,5 +1,5 @@
 # centWebServer
-## Configure Web Server on CentOS in seconds.
+## Configure Web Server on CentOS 7 in seconds.
 
 <img src="https://www.theigor.net/imgs/var/resizes/My-Projects/centWebServer/img14.png">
 
