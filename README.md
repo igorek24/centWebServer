@@ -5,8 +5,9 @@
 
 ---
 
-What would take hours to do manualy, can be done in under 60 seconds (depending on your hardware and internet speed).
+What would take hours to do manual, can be done in under 60 seconds (depending on your hardware and internet speed).
 
+I wrote this script for myself but you can use it any way you like. Sometime I have to setup bunch of web servers, ind it takes a lot of time to do so manualy.
 ### How to use it.
 
 Edit config.sh to your needs. For the most part defaults should be OK besides "HTTPD_WEBMASTER", "APP_DOMAIN_NAME", "APP_ALIAS" and "PHP_DATE_TIME".
@@ -21,7 +22,7 @@ And just ansare "YES" or "NO".
 Here what it will do if you select "YES" to all of the prompts
 
 1. System
-  * Install  dialog, nano and wget.
+  * Installs  dialog, nano and wget.
   * Update (yum update).
 2. Apache
   * Install httpd, mod_ssl.
@@ -33,19 +34,24 @@ Here what it will do if you select "YES" to all of the prompts
   * Adds  ServerTokens to Prod
   * Adds  TraceEnable to Off
   * Adds  SetOutputFilter to DEFLATE
+  * Creates user
+  * Creates group
+  * Creates directory to store apps
+  * Configures permissions
+  * Configures Selinux
 3. Custom Error Pages
   * Changes default noindex index.html
   * Creates 400.htm, 401.html, 403.html, 404.html, 405.html,500.html 502.html and 503.html files in "/usr/share/httpd/custom_error/" directory.
 4. PHP
-  * Insalls php and php modules specified in config.sh
+  * Installs php and php modules specified in config.sh
   * Changes upload_max_filesize to value specified in config.sh
   * Changes memory_limit to value specified in config.sh
   * Sets date.timezone to value specified in config.sh
   *Changes expose_php to value specified in config.sh
   * Changes post_max_size to value specified in config.sh
 5. MySQL Server
-  * Installs MySQL 5.x / MAriaDB 5.x / MariaDB 10.x / Percona MySQL (You can choose preferd flavor in config.sh.
-  * Runns mysql_secure_installation
+  * Installs MySQL 5.x / MAriaDB 5.x / MariaDB 10.x / Percona MySQL (You can choose preferred flavor in config.sh.
+  * Runs mysql_secure_installation
 
 ___
 
