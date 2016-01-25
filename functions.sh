@@ -21,6 +21,7 @@ bck_httpd_confs(){
   fi
   if [ ! -d backup/etc/httpd ]; then
   mkdir backup/etc/httpd
+  cp /etc/httpd/conf/httpd.conf backup/etc/httpd/
   else
   echo "Folder alreadr exist. :-)"
   fi
@@ -36,7 +37,7 @@ bck_httpd_confs(){
   fi
   # Backup welcom.conf and remove it from httpd.
   if [ -f /etc/httpd/conf.d/welcome.conf ]; then
-  mv /etc/httpd/conf.d/welcome.conf backup/etc/httpd/conf.d
+  cp /etc/httpd/conf.d/welcome.conf backup/etc/httpd/conf.d
   else
   echo "welcome.conf not found. :-)"
   fi
@@ -44,9 +45,17 @@ bck_httpd_confs(){
   cp /etc/httpd/conf/httpd.conf backup/etc/httpd
   # Backup /etc/httpd/conf.d/autoindex.conf
   cp  /etc/httpd/conf.d/autoindex.conf backup/etc/httpd/conf.d/
+  # Backup /usr/share/httpd/noindex/index.html
+  if [ ! -d backup/usr/share/httpd/noindex/ ]; then
+  mkdir -p backup/usr/share/httpd/noindex
+  cp /usr/share/httpd/noindex/index.html backup/usr/share/httpd/noindex/
+  else
+  echo "Folder alreadr exist. :-)"
+  cp /usr/share/httpd/noindex/index.html backup/usr/share/httpd/noindex/
+  fi
 }
 # Apache Hardening function
-httpd_hardening(){
+httpd_conf(){
   # Hide servers identity.
   sed -i "s/EnableSendfile on/EnableSendfile on \nServerSignature Off \nServerTokens Prod \nTraceEnable Off \nSetOutputFilter DEFLATE /g" /etc/httpd/conf/httpd.conf
   # Making Indexes Options look beter (Optinal, its recomended to disable Indexes option).
@@ -83,7 +92,7 @@ httpd_custom_error(){
   cp -R inc/custom_error /usr/share/httpd/
   cp inc/customerror.conf /etc/httpd/conf.d/
   chcon -R -u system_u -t httpd_sys_content_t /usr/share/httpd/custom_error
-  restorecon -R /usr/share/httpd/custom_error
+
 }
 # Checking if $SYS_USER exists and if not create it.
 USER_CHECK(){
