@@ -142,6 +142,7 @@ httpd_selinux(){
   echo -e "${BYel}${On_Pur}Please wait, making your life easier by Configuring Selinux for you!${RCol}"
   chcon -R -u system_u -t httpd_sys_content_t $WEB_ROOT_DIR
   chcon -R -t httpd_sys_rw_content_t $WEB_ROOT_DIR
+  setsebool -P httpd_unified 1
   setsebool -P httpd_can_sendmail 1
   setsebool -P httpd_can_network_connect 1
   restorecon -R $WEB_ROOT_DIR
